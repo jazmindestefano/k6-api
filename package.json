@@ -1,0 +1,21 @@
+{
+  "name": "k6",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "k6 run script.js",
+    "test:basic": "k6 run script.js --vus 10 --duration 30s",
+    "test:load": "k6 run script.js --vus 50 --duration 1m",
+    "test:stress": "k6 run script.js --vus 100 --duration 2m",
+    "test:spike": "k6 run script.js --vus 200 --duration 30s",
+    "test:geo": "k6 run script.js -e REGION=global",
+    "report": "k6 run script.js --out json=results.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/k6": "^1.1.1"
+  }
+}
