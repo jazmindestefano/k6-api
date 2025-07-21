@@ -3,19 +3,21 @@
   "version": "1.0.0",
   "main": "script.js",
   "scripts": {
-    "test": "k6 run script.js",
-    "test:basic": "k6 run script.js --vus 10 --duration 30s",
-    "test:load": "k6 run script.js --vus 50 --duration 1m",
-    "test:stress": "k6 run script.js --vus 100 --duration 2m",
-    "test:spike": "k6 run script.js --vus 200 --duration 30s",
-    "test:geo": "k6 run script.js -e REGION=global",
-    "report": "k6 run script.js --out json=results.json"
+    "test": "dotenv k6 run script.js",
+    "test:basic": "dotenv k6 run -e TEST_TYPE=basic script.js",
+    "test:stages": "dotenv k6 run -e TEST_TYPE=stages script.js",
+    "test:stress": "dotenv k6 run -e TEST_TYPE=stress script.js",
+    "test:with-token": "dotenv k6 run script.js",
+    "test:report": "dotenv k6 run -e TEST_TYPE=basic --out json=results.json script.js",
+    "test:report:stages": "dotenv k6 run -e TEST_TYPE=stages --out json=results.json script.js",
+    "test:report:stress": "dotenv k6 run -e TEST_TYPE=stress --out json=results.json script.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@types/k6": "^1.1.1"
+    "@types/k6": "^1.1.1",
+    "dotenv-cli": "^7.4.2"
   }
 }
